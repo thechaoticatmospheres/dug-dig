@@ -679,6 +679,7 @@ function rocksStep(g: Game) {
 }
 export function step(g: Game) {
   g.tick++;
+  for (const p of g.players) p.ack = p.input.seq;
   if (g.phase === "over") return;
   if (g.phase !== "play") {
     if (--g.timer > 0) return;

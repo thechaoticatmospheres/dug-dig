@@ -1,6 +1,6 @@
 import { performance } from "node:perf_hooks";
 import { deflateRawSync } from "node:zlib";
-import { createGame, loadRound, step } from "../src/shared/simulation";
+import { createGame, Game, loadRound, step } from "../src/shared/simulation";
 import { packTerrain } from "../src/shared/protocol";
 const game = createGame(
   "coop",
@@ -23,7 +23,7 @@ for (let i = 0; i < 3600; i++) {
       seq: i + 1,
     };
   step(game);
-  if (game.phase === "over") loadRound(game);
+  if ((game as Game).phase === "over") loadRound(game);
   if (i % 3 === 0) {
     const data = JSON.stringify({
       ...game,

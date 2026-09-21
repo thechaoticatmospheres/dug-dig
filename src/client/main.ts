@@ -130,6 +130,8 @@ function startLocal(two = false) {
   updateUi();
 }
 function connectPanel(mode: Mode) {
+  ($("connect") as HTMLButtonElement).disabled = false;
+  resultsShown = false;
   route = "network";
   onlineMode = mode;
   scene.attract = true;
@@ -254,8 +256,8 @@ $("connect").onclick = () => {
   const code = ($("room-input") as HTMLInputElement).value.trim().toUpperCase(),
     name = ($("player-name") as HTMLInputElement).value.trim() || "Digger";
   writeStorage("dug-name", name);
-  network.connect(code, name, onlineMode, true);
   ($("connect") as HTMLButtonElement).disabled = true;
+  network.connect(code, name, onlineMode, true);
 };
 $("ready").onclick = () => {
   const me = network.room?.members.find((m) => m.id === network.id);
