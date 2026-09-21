@@ -1,0 +1,36 @@
+{
+  "name": "dug-dig",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx tools/dev.ts",
+    "dev:client": "vite --host 127.0.0.1",
+    "start": "tsx src/server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "playwright test",
+    "check": "tsc --noEmit",
+    "assets": "tsx tools/assets.ts"
+  },
+  "dependencies": {
+    "@fontsource/space-mono": "5.3.0",
+    "phaser": "3.90.0",
+    "tsx": "4.20.5",
+    "ws": "8.21.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.18.6",
+    "@types/pngjs": "6.0.5",
+    "@types/ws": "8.18.1",
+    "pngjs": "7.0.0",
+    "prettier": "3.9.8",
+    "typescript": "5.9.2",
+    "vite": "7.3.6"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
