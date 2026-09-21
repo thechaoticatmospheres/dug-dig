@@ -2,6 +2,8 @@
 
 A browser reconstruction of the 1982 digging arcade game, with local solo, alternating two-player, online co-op and online score races for 2–4 players.
 
+**[Play on GitHub Pages](https://thechaoticatmospheres.github.io/dug-dig/)** — Arcade and Take Turns are live. Public online play is pending because the Render workspace is suspended after exhausting its free bandwidth allowance. Both online modes can be run locally using the commands below.
+
 ## Play locally
 
 Node.js 22.12 or newer is required.

@@ -11,7 +11,9 @@
 
 ## Deployment status
 
-The new public repository is https://github.com/thechaoticatmospheres/dug-dig . GitHub Pages publication is in progress; its status must be verified before claiming it is live.
+The public repository is https://github.com/thechaoticatmospheres/dug-dig . **GitHub Pages is live at https://thechaoticatmospheres.github.io/dug-dig/**. Workflow https://github.com/thechaoticatmospheres/dug-dig/actions/runs/35644585412 passed its build, all 27 simulation/network checks, all four Chromium browser tests and deployment for runtime commit `c9183b8`.
+
+The initial CI run caught a type-narrowing error in the subsequently added profiling utility. That was corrected before the successful deployment. The live site was opened in the signed-in Codex browser; Arcade started, sprites rendered, gameplay advanced and lives updated. Online mode correctly displayed its unavailable message. The production build also passed a local preview check under `/dug-dig/`, including sprites and bundled fonts.
 
 Render was inspected in the user's signed-in Codex browser. The dashboard states that the Hobby workspace is suspended after consuming its **5 GB free bandwidth allowance**. New service creation is disabled. No paid upgrade, card entry, additional account or attempt to bypass the limit was made. Consequently no Dug Dig Render service or public health URL exists yet, and public multiplayer cannot be verified. The separate free-service configuration is ready in render.yaml. Zombiino's service was not modified.
 
@@ -19,6 +21,10 @@ Render was inspected in the user's signed-in Codex browser. The dashboard states
 
 The game is a functional reconstruction, not an exact original-game emulator. Manual scoring is implemented, but original ROM level tables, pixel-identical sprites, music/waveforms, measured original frame timings, precise enemy routing/escape behavior, attract sequence and round-256 hardware behavior are not verified/reproduced. These are substantive remaining differences from the requested 1:1 target. See reference/FIDELITY.md.
 
-Tests verify the implemented reconstruction's internal behavior, not equivalence to a physical cabinet. Full reference-video timing comparison, physical gamepad play, extended Internet play and Render load/cold-start/restart testing remain unperformed. Production base-path and Pages smoke results will be recorded after deployment.
+Tests verify the implemented reconstruction's internal behavior, not equivalence to a physical cabinet. Full reference-video timing comparison, physical gamepad play, extended Internet play and Render load/cold-start/restart testing remain unperformed.
+
+## Bandwidth sample
+
+`node --import tsx tools/profile.ts` simulated 60 seconds and sampled 20 snapshots per second: average raw snapshot 3,587 bytes; compressed snapshot 792 bytes. That synthetic case projects about 218 MiB per hour for a four-player room, excluding wire overhead. Profiling (including compression) took 104 ms locally. These are local workload observations, not a hosted capacity benchmark. Terrain is packed four cells per hex character, unchanged terrain is omitted, and snapshots use WebSocket compression.
 
 Captured artifacts: screenshots/menu.png, screenshots/arcade.png, screenshots/coop.png, screenshots/competitive.png, screenshots/mobile.png.
